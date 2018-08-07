@@ -27,7 +27,7 @@
             "App\\": "app/"
         },
         "files": [
-            "bootstrap/helpers.php"   //引入自定义函数文件
+            "bootstrap/helpers.php"
             ]
     },
     "autoload-dev": {
