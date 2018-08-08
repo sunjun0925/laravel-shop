@@ -26,6 +26,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');        //用户主动发送邮件路由
     
     Route::group(['middleware' => 'email_verified'], function() {
-        Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
+        
+        //收货地址模块路由
+        Route::prefix('user_addresses')->group(function () {
+            Route::get('/', 'UserAddressesController@index')->name('user_addresses.index');    //收货地址列表
+            Route::get('/create', 'UserAddressesController@create')->name('user_addresses.create');   //创建收货地址
+            Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');  //保存用户新增收货地址
+        });
+
     });
 });
