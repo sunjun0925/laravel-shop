@@ -26,6 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');        //用户主动发送邮件路由
     
     Route::group(['middleware' => 'email_verified'], function() {
-    
+        Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
     });
 });
